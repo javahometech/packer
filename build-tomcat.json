@@ -8,10 +8,10 @@
       "access_key": "{{user `aws_access_key`}}",
       "secret_key": "{{user `aws_secret_key`}}",
       "region": "ap-south-1",
-      "source_ami": "ami-0912f71e06545ad88",
+      "source_ami": "ami-5b673c34",
       "instance_type": "t2.micro",
       "ssh_username": "ec2-user",
-      "ami_name": "apache-ami-packer-{{timestamp}}"
+      "ami_name": "tomcat-ami-packer-{{timestamp}}"
     }
   ],
   "provisioners": [
@@ -21,10 +21,7 @@
         "sudo yum install -y java-1.8.0-openjdk",
         "sudo yum install -y tomcat",
         "sudo chkconfig tomcat on",
-        "sudo mkdir /usr/shared/tomcat/webapps/ROOT",
-        "sudo su",
-        "echo '<h1>Welcome to tomcat with Packer</h1>' > /usr/shared/tomcat/webapps/ROOT/index.html",
-        "service tomcat start"
+        "sudo service tomcat start"
       ]
     }
   ]
